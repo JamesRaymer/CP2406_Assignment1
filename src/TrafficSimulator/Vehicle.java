@@ -1,0 +1,8 @@
+package TrafficSimulator;
+
+class Vehicle {
+
+}
+
+
+
