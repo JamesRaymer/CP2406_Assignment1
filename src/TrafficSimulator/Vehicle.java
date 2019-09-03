@@ -11,7 +11,7 @@ class Vehicle {
         this.setBreadth(this.breadth);
     }
 
-    private void setType(String type) {
+    void setType(String type) {
         this.type = type;
     }
 
@@ -61,7 +61,7 @@ class Vehicle {
         this.breadth = breadth;
     }
 
-    private void calculateBreadth() {
-        this.breadth = this.length / 2.0;
+    double calculateBreadth() {
+        return this.breadth = this.length / 2.0;
     }
 }
