@@ -4,15 +4,25 @@ class Vehicle {
     private String type;
     private double length;
     private double breadth;
+    int position;
 
     Vehicle(String type) {
         this.setType(type);
         this.setLength(this.length);
         this.setBreadth(this.breadth);
+        this.setPosition(this.position);
     }
 
     void setType(String type) {
         this.type = type;
+    }
+
+    void setPosition(int position) {
+        this.position = position;
+    }
+
+    public int getPosition() {
+        return position;
     }
 
     String getType() {
@@ -52,4 +62,5 @@ class Vehicle {
     double calculateBreadth() {
         return this.breadth = this.length / 2.0;
     }
+
 }
