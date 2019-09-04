@@ -23,29 +23,17 @@ class Vehicle {
         this.length = length;
         length = 2.0;
         String type = this.type;
-        byte count = -1;
         switch(type) {
             case "Bus":
-                count = 1;
-                break;
-            case "Car":
-                count = 0;
-                break;
-            case "Motorbike":
-                count = 2;
-        }
-
-        switch(count) {
-            case 0:
-                this.length = length;
-                break;
-            case 1:
                 this.length = length * 3.0;
                 break;
-            case 2:
+            case "Car":
+                this.length = length;
+                break;
+            case "Motorbike":
                 this.length = length * 0.5;
+                break;
         }
-
     }
 
     double getLength() {
