@@ -17,12 +17,4 @@ class TrafficLight {
         Random random = new Random();
         this.condition = random.nextBoolean();
     }
-
-    void greenLight() {
-        System.out.println("The traffic light is green. The car is moving!");
-    }
-
-    void redLight() {
-        System.out.println("The traffic light is red. The car is halted.");
-    }
 }

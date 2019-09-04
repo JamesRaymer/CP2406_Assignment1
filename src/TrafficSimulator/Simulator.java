@@ -19,11 +19,11 @@ public class Simulator {
         trafficLight.changeStatus();
 
         for(boolean condition = trafficLight.getStatus(); !condition; condition = trafficLight.getStatus()) {
-            trafficLight.redLight();
+            System.out.println("The traffic light is red. The car is halted.");
             trafficLight.changeStatus();
         }
 
-        trafficLight.greenLight();
+        System.out.println("The traffic light is green. The car is moving!");
 
         while(secondEndPoint != 0) {
             --secondEndPoint;
