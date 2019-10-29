@@ -1,10 +1,13 @@
 package TrafficSimulator;
 
+import com.sun.tools.javac.Main;
+
 class Road {
     private int segments;
     private String type;
     private Road nextRoad;
     private int speedLimit;
+    MainFrame gframe;
 
     Road(int segments, String type, int speedLimit) {
         this.segments = segments;
@@ -17,6 +20,9 @@ class Road {
         this.type = type;
         this.speedLimit = speedLimit;
         this.nextRoad = nextRoad;
+    }
+    Road(MainFrame frame){
+        gframe = frame;
     }
 
     int getSegments() {

@@ -4,13 +4,14 @@ class Vehicle {
     private String type;
     private double length;
     private double breadth;
+    private int roadNumber;
     int position;
 
     Vehicle(String type) {
         this.setType(type);
         this.setLength(this.length);
         this.setBreadth(this.breadth);
-        this.setPosition(this.position);
+        this.setPosition(0);
     }
 
     void setType(String type) {
@@ -63,4 +64,6 @@ class Vehicle {
         return this.breadth = this.length / 2.0;
     }
 
+    int getRoadNumber() { return this.roadNumber;}
+    void setRoadNumber(int roadNumber) { this.roadNumber = roadNumber;}
 }
