@@ -12,7 +12,7 @@ public class Simulator {
         MainFrame frame = new MainFrame();
         frame.setSize(800,800);
         frame.setVisible(true);
-        Road road2 = new Road(5, "straight", 50);
+        /**Road road2 = new Road(5, "straight", 50);
         Road road1 = new Road(6, "Straight", 60, road2);
         Vehicle vehicle = new Vehicle("Bus");
         TrafficLight trafficLight = new TrafficLight(true);
@@ -40,6 +40,6 @@ public class Simulator {
                     "km/hr and is " + 25 * vehicle.position + " meters away from the end of the road.");
         }
 
-        System.out.println("Car has fell off the world and has ceased to exist.");
+        System.out.println("Car has fell off the world and has ceased to exist.");**/
     }
 }

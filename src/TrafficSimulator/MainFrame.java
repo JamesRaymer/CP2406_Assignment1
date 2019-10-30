@@ -23,7 +23,7 @@ public class MainFrame extends JFrame{
     private boolean editable;
     private boolean[] spots = {false, false, false, false, false};
     private Road[] roadArray = {null, null, null, null, null};
-    private TrafficLight[] trafficLights ={new TrafficLight(true), new TrafficLight(true), new TrafficLight(true), new TrafficLight(true), new TrafficLight(true)};
+    private TrafficLight[] trafficLights ={new TrafficLight(false), new TrafficLight(true), new TrafficLight(true), new TrafficLight(true), new TrafficLight(true), new TrafficLight(true)};
     private ArrayList<Vehicle> vehicles = new ArrayList<>();
     static Timer systemTimer;
     Random random = new Random();
@@ -72,7 +72,7 @@ public class MainFrame extends JFrame{
         grid4.setBackground(Color.WHITE);
         grid3.setBackground(Color.WHITE);
         grid2.setBackground(Color.WHITE);
-        grid1.setBackground(Color.WHITE);
+        grid1.setBackground(Color.BLUE);
         mainGrid.setLayout(new GridLayout(3,1));
         mainGrid.add(space1);
         mainGrid.add(trafficGrid);
@@ -133,12 +133,83 @@ public class MainFrame extends JFrame{
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 if(editable) {
-                    System.out.println("Worked");
                     if(!spots[0]){
                         Road road = new Road(5, "straight", 50);
                         roadArray[0] = road;
                         spots[0] = true;
                         grid1.setBackground(Color.DARK_GRAY);
+                    }
+                    else {
+
+                    }
+
+                }
+            }
+        });
+        grid2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                if(editable) {
+                    if(!spots[1]){
+                        Road road = new Road(5, "straight", 50);
+                        roadArray[1] = road;
+                        spots[1] = true;
+                        grid2.setBackground(Color.DARK_GRAY);
+                    }
+                    else {
+
+                    }
+
+                }
+            }
+        });
+        grid3.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                if(editable) {
+                    if(!spots[2]){
+                        Road road = new Road(5, "straight", 50);
+                        roadArray[2] = road;
+                        spots[2] = true;
+                        grid3.setBackground(Color.DARK_GRAY);
+                    }
+                    else {
+
+                    }
+
+                }
+            }
+        });
+        grid4.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                if(editable) {
+                    if(!spots[3]){
+                        Road road = new Road(5, "straight", 50);
+                        roadArray[3] = road;
+                        spots[3] = true;
+                        grid4.setBackground(Color.DARK_GRAY);
+                    }
+                    else {
+
+                    }
+
+                }
+            }
+        });
+        grid5.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                if(editable) {
+                    if(!spots[4]){
+                        Road road = new Road(5, "straight", 50);
+                        roadArray[4] = road;
+                        spots[4] = true;
+                        grid5.setBackground(Color.DARK_GRAY);
                     }
                     else {
 
@@ -179,46 +250,130 @@ public class MainFrame extends JFrame{
         }
 
     public void tickTask() {
-        System.out.println("Worked");
         if (random.nextFloat() > .8f) {
             Vehicle vehicle = new Vehicle("Car");
-            for (int i = 0; i < spots.length; i++) {
+            for (int i = 0; i < spots.length - 1; i++) {
                 if (spots[i]) {
-                    vehicle.setPosition(roadArray[i].getSegments());
+                    //vehicle.setPosition(roadArray[i].getSegments());
                     vehicle.setRoadNumber(i);
                     vehicles.add(vehicle);
-                    System.out.println("Worked");
                     roadSegments1[0].setVisible(true);
                     break;
                 }
             }
         }
         for(int i = 0; i < vehicles.size(); i ++){
-            if (vehicles.get(i).position <= 4) {
+            if (vehicles.get(i).position < 4) {
                 switch (vehicles.get(i).getRoadNumber()){
                     case 0 :
-                        roadSegments1[0].setVisible(true);
+                        if(!roadSegments1[vehicles.get(i).position + 1].isVisible()){
+                            ++vehicles.get(i).position;
+                            roadSegments1[vehicles.get(i).position].setVisible(true);
+                            if(vehicles.get(i).position != 0){
+                                roadSegments1[vehicles.get(i).position - 1].setVisible(false);
+                            }
+                        }
                         break;
                     case 1 :
-                        roadSegments2[0].setVisible(true);
+
+                        if(!roadSegments2[vehicles.get(i).position + 1].isVisible()){
+                            ++vehicles.get(i).position;
+                            roadSegments2[vehicles.get(i).position].setVisible(true);
+                            if(vehicles.get(i).position != 0){
+                                roadSegments2[vehicles.get(i).position - 1].setVisible(false);
+                            }
+                        }
                         break;
                     case 2 :
-                        roadSegments3[0].setVisible(true);
+
+                        if(!roadSegments3[vehicles.get(i).position + 1].isVisible()){
+                            ++vehicles.get(i).position;
+                            roadSegments3[vehicles.get(i).position].setVisible(true);
+                            if(vehicles.get(i).position != 0){
+                                roadSegments3[vehicles.get(i).position - 1].setVisible(false);
+                            }
+                        }
                         break;
                     case 3 :
-                        roadSegments4[0].setVisible(true);
+
+                        if(!roadSegments4[vehicles.get(i).position + 1].isVisible()){
+                            ++vehicles.get(i).position;
+                            roadSegments4[vehicles.get(i).position].setVisible(true);
+                            if(vehicles.get(i).position != 0){
+                                roadSegments4[vehicles.get(i).position - 1].setVisible(false);
+                            }
+                        }
                         break;
                     case 4 :
-                        roadSegments5[0].setVisible(true);
+
+                        if(!roadSegments5[vehicles.get(i).position + 1].isVisible()){
+                            ++vehicles.get(i).position;
+                            roadSegments5[vehicles.get(i).position].setVisible(true);
+                            if(vehicles.get(i).position != 0){
+                                roadSegments5[vehicles.get(i).position - 1].setVisible(false);
+                            }
+                        }
                         break;
                 }
-                ++vehicles.get(i).position;
+
             }
             else if(trafficLights[vehicles.get(i).getRoadNumber()].getStatus()){
-                if (i == 4 || spots[i + 1]){
-                    vehicles.get(i).setRoadNumber(i + 1);
-                    vehicles.get(i).setPosition(0);
+                if (vehicles.get(i).getRoadNumber() == 4 || spots[vehicles.get(i).getRoadNumber() + 1]){
+                    if (vehicles.get(i).getRoadNumber() == 4 ){
+                        roadSegments5[4].setVisible(false);
+                        vehicles.remove(i);
+                    }
+                    else{
+                        switch (vehicles.get(i).getRoadNumber()){
+                            case 0 :
+                                roadSegments1[4].setVisible(false);
+                                break;
+                            case 1:
+                                roadSegments2[4].setVisible(false);
+                                break;
+                            case 2:
+                                roadSegments3[4].setVisible(false);
+                                break;
+                            case 3:
+                                roadSegments4[4].setVisible(false);
+                                break;
+                            case 4:
+                                roadSegments5[4].setVisible(false);
+                                break;
+                        }
+                        vehicles.get(i).setRoadNumber(vehicles.get(i).getRoadNumber() + 1);
+                        vehicles.get(i).setPosition(0);
+                    }
                 }
+                else {
+                    System.out.println("Traffic light: " + trafficLights[vehicles.get(i).getRoadNumber()].getStatus());
+                    System.out.println("before remove: " + Integer.toString(vehicles.size()));
+                    switch (vehicles.get(i).getRoadNumber()){
+                        case 0 :
+                            roadSegments1[4].setVisible(false);
+                            break;
+                        case 1:
+                            roadSegments2[4].setVisible(false);
+                            break;
+                        case 2:
+                            roadSegments3[4].setVisible(false);
+                            break;
+                        case 3:
+                            roadSegments4[4].setVisible(false);
+                            break;
+                        case 4:
+                            roadSegments5[4].setVisible(false);
+                            break;
+                    }
+                    vehicles.remove(i);
+                    System.out.println("after remove: " + Integer.toString(vehicles.size()));
+                }
+            }
+
+        }
+        if (random.nextFloat() > .8f) {
+            for( int i = 0; i < trafficLights.length; i++){
+                trafficLights[i].changeStatus();
             }
         }
     }

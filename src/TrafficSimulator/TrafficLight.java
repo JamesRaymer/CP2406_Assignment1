@@ -14,7 +14,6 @@ class TrafficLight {
     }
 
     void changeStatus() {
-        Random random = new Random();
-        this.condition = random.nextBoolean();
+        this.condition = !this.condition;
     }
 }
