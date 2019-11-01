@@ -22,10 +22,9 @@ import java.util.TimerTask;
 import java.awt.Graphics;
 
 public class MainFrame extends JFrame{
-    private JLabel header, statusLabel, mode;
+    private JLabel header;
     private int carCount;
     private JLabel status = new JLabel("" + carCount);
-    private JButton startButton, exitButton, editButton, menuButton;
     private boolean editable;
     private boolean[] spots = {false, false, false, false, false};
     private Road[] roadArray = {null, null, null, null, null};
@@ -33,7 +32,7 @@ public class MainFrame extends JFrame{
     private ArrayList<Vehicle> vehicles = new ArrayList<>();
     static Timer systemTimer;
     Random random = new Random();
-    private int timeRate = 250;
+    private int timeRate = 500;
     JPanel grid1 = new JPanel();
     JPanel[] roadSegments1 = {new JPanel(), new JPanel(), new JPanel(), new JPanel(), new JPanel(),};
     JPanel grid2 = new JPanel();
@@ -55,6 +54,7 @@ public class MainFrame extends JFrame{
     JPanel lightGrid5 = new JPanel();
     JPanel[] lightSegments5 = {new JPanel(), new JPanel(), new JPanel(), new JPanel(), new JPanel(),};
 
+
     MainFrame() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JMenuBar menuBar = new JMenuBar();
@@ -64,6 +64,8 @@ public class MainFrame extends JFrame{
         JMenuItem save = new JMenuItem("Save");
         file.add(load);
         file.add(save);
+        ImageIcon cityImage = new ImageIcon("resources/city,jpg");
+        JLabel cityMap = new JLabel(cityImage);
         menuBar.add(file);
         header = new JLabel("Traffic Simulator");
         final JLabel status = new JLabel("Not running.");
@@ -74,7 +76,6 @@ public class MainFrame extends JFrame{
         JPanel space3 = new JPanel();
         JPanel space4 = new JPanel();
         JPanel space5 = new JPanel();
-        JPanel space6 = new JPanel();
         JPanel trafficGrid = new JPanel();
         JPanel mainLightGrid = new JPanel();
         JPanel bottomPanel = new JPanel();
@@ -95,7 +96,6 @@ public class MainFrame extends JFrame{
         mainGrid.add(mainLightGrid);
         mainGrid.add(trafficGrid);
         mainGrid.add(space2);
-        mainGrid.add(space6);
         mainLightGrid.setLayout(new GridLayout(1,5));
         mainLightGrid.add(lightGrid1);
         mainLightGrid.add(lightGrid2);
@@ -169,7 +169,7 @@ public class MainFrame extends JFrame{
         menuButton.setEnabled(false);
         startButton.setEnabled(false);
         pack();
-        setLocationRelativeTo(null);
+        setLocationRelativeTo(null); // centre on screen
         setVisible(true);
 
         grid1.addMouseListener(new MouseAdapter() {
@@ -407,7 +407,7 @@ public class MainFrame extends JFrame{
                                 break;
                         }
                         vehicles.get(i).setRoadNumber(vehicles.get(i).getRoadNumber() + 1);
-                        vehicles.get(i).setPosition(0);
+                        vehicles.get(i).setPosition(-1);
                     }
                 }
                 else {
