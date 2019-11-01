@@ -1,30 +1,18 @@
 package TrafficSimulator;
 import java.awt.*;
-import java.awt.image.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.TimerTask;
 import javax.swing.*;
-import javax.swing.event.AncestorEvent;
-import javax.swing.event.AncestorListener;
 import java.util.Random;
 import java.util.Timer;
-import java.util.TimerTask;
-import java.awt.Graphics;
+
 
 public class MainFrame extends JFrame{
     private JLabel header;
-    private int carCount;
-    private JLabel status = new JLabel("" + carCount);
     private boolean editable;
     private boolean[] spots = {false, false, false, false, false};
     private Road[] roadArray = {null, null, null, null, null};
@@ -32,7 +20,7 @@ public class MainFrame extends JFrame{
     private ArrayList<Vehicle> vehicles = new ArrayList<>();
     static Timer systemTimer;
     Random random = new Random();
-    private int timeRate = 500;
+    private int timeRate = 250;
     JPanel grid1 = new JPanel();
     JPanel[] roadSegments1 = {new JPanel(), new JPanel(), new JPanel(), new JPanel(), new JPanel(),};
     JPanel grid2 = new JPanel();
@@ -315,7 +303,6 @@ public class MainFrame extends JFrame{
                     //vehicle.setPosition(roadArray[i].getSegments());
                     vehicle.setRoadNumber(i);
                     vehicles.add(vehicle);
-                    carCount = vehicles.size();
                     roadSegments1[0].setVisible(true);
                     break;
                 }
@@ -328,7 +315,7 @@ public class MainFrame extends JFrame{
                         if(!roadSegments1[vehicles.get(i).position + 1].isVisible()){
                             ++vehicles.get(i).position;
                             roadSegments1[vehicles.get(i).position].setVisible(true);
-                            roadSegments1[vehicles.get(i).position].setBackground(Color.GREEN);
+                            roadSegments1[vehicles.get(i).position].setBackground(Color.BLUE);
                             if(vehicles.get(i).position != 0){
                                 roadSegments1[vehicles.get(i).position - 1].setVisible(false);
                             }
@@ -339,7 +326,7 @@ public class MainFrame extends JFrame{
                         if(!roadSegments2[vehicles.get(i).position + 1].isVisible()){
                             ++vehicles.get(i).position;
                             roadSegments2[vehicles.get(i).position].setVisible(true);
-                            roadSegments2[vehicles.get(i).position].setBackground(Color.GREEN);
+                            roadSegments2[vehicles.get(i).position].setBackground(Color.BLUE);
                             if(vehicles.get(i).position != 0){
                                 roadSegments2[vehicles.get(i).position - 1].setVisible(false);
                             }
@@ -350,7 +337,7 @@ public class MainFrame extends JFrame{
                         if(!roadSegments3[vehicles.get(i).position + 1].isVisible()){
                             ++vehicles.get(i).position;
                             roadSegments3[vehicles.get(i).position].setVisible(true);
-                            roadSegments3[vehicles.get(i).position].setBackground(Color.GREEN);
+                            roadSegments3[vehicles.get(i).position].setBackground(Color.BLUE);
                             if(vehicles.get(i).position != 0){
                                 roadSegments3[vehicles.get(i).position - 1].setVisible(false);
                             }
@@ -361,7 +348,7 @@ public class MainFrame extends JFrame{
                         if(!roadSegments4[vehicles.get(i).position + 1].isVisible()){
                             ++vehicles.get(i).position;
                             roadSegments4[vehicles.get(i).position].setVisible(true);
-                            roadSegments4[vehicles.get(i).position].setBackground(Color.GREEN);
+                            roadSegments4[vehicles.get(i).position].setBackground(Color.BLUE);
                             if(vehicles.get(i).position != 0){
                                 roadSegments4[vehicles.get(i).position - 1].setVisible(false);
                             }
@@ -372,7 +359,7 @@ public class MainFrame extends JFrame{
                         if(!roadSegments5[vehicles.get(i).position + 1].isVisible()){
                             ++vehicles.get(i).position;
                             roadSegments5[vehicles.get(i).position].setVisible(true);
-                            roadSegments5[vehicles.get(i).position].setBackground(Color.GREEN);
+                            roadSegments5[vehicles.get(i).position].setBackground(Color.BLUE);
                             if(vehicles.get(i).position != 0){
                                 roadSegments5[vehicles.get(i).position - 1].setVisible(false);
                             }
@@ -386,7 +373,6 @@ public class MainFrame extends JFrame{
                     if (vehicles.get(i).getRoadNumber() == 4 ){
                         roadSegments5[4].setVisible(false);
                         vehicles.remove(i);
-                        carCount = vehicles.size();
                     }
                     else{
                         switch (vehicles.get(i).getRoadNumber()){
