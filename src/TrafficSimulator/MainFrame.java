@@ -286,6 +286,7 @@ public class MainFrame extends JFrame{
                         if(!roadSegments1[vehicles.get(i).position + 1].isVisible()){
                             ++vehicles.get(i).position;
                             roadSegments1[vehicles.get(i).position].setVisible(true);
+                            roadSegments1[vehicles.get(i).position].setBackground(Color.GREEN);
                             if(vehicles.get(i).position != 0){
                                 roadSegments1[vehicles.get(i).position - 1].setVisible(false);
                             }
@@ -296,6 +297,7 @@ public class MainFrame extends JFrame{
                         if(!roadSegments2[vehicles.get(i).position + 1].isVisible()){
                             ++vehicles.get(i).position;
                             roadSegments2[vehicles.get(i).position].setVisible(true);
+                            roadSegments2[vehicles.get(i).position].setBackground(Color.GREEN);
                             if(vehicles.get(i).position != 0){
                                 roadSegments2[vehicles.get(i).position - 1].setVisible(false);
                             }
@@ -306,6 +308,7 @@ public class MainFrame extends JFrame{
                         if(!roadSegments3[vehicles.get(i).position + 1].isVisible()){
                             ++vehicles.get(i).position;
                             roadSegments3[vehicles.get(i).position].setVisible(true);
+                            roadSegments3[vehicles.get(i).position].setBackground(Color.GREEN);
                             if(vehicles.get(i).position != 0){
                                 roadSegments3[vehicles.get(i).position - 1].setVisible(false);
                             }
@@ -316,6 +319,7 @@ public class MainFrame extends JFrame{
                         if(!roadSegments4[vehicles.get(i).position + 1].isVisible()){
                             ++vehicles.get(i).position;
                             roadSegments4[vehicles.get(i).position].setVisible(true);
+                            roadSegments4[vehicles.get(i).position].setBackground(Color.GREEN);
                             if(vehicles.get(i).position != 0){
                                 roadSegments4[vehicles.get(i).position - 1].setVisible(false);
                             }
@@ -326,6 +330,7 @@ public class MainFrame extends JFrame{
                         if(!roadSegments5[vehicles.get(i).position + 1].isVisible()){
                             ++vehicles.get(i).position;
                             roadSegments5[vehicles.get(i).position].setVisible(true);
+                            roadSegments5[vehicles.get(i).position].setBackground(Color.GREEN);
                             if(vehicles.get(i).position != 0){
                                 roadSegments5[vehicles.get(i).position - 1].setVisible(false);
                             }
