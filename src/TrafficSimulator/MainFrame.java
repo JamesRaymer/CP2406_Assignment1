@@ -263,7 +263,7 @@ public class MainFrame extends JFrame{
                 run();
                 startButton.setEnabled(false);
                 editButton.setEnabled(false);
-                status.setText("Running.");
+                status.setText("Traffic Simulator is running.");
             }
         });
         editButton.addActionListener(new ActionListener() {
@@ -273,6 +273,7 @@ public class MainFrame extends JFrame{
                 startButton.setEnabled(false);
                 editButton.setEnabled(false);
                 menuButton.setEnabled(true);
+                status.setText("Edit traffic mode enabled.");
             }
         });
         menuButton.addActionListener(new ActionListener() {
@@ -281,6 +282,7 @@ public class MainFrame extends JFrame{
                 startButton.setEnabled(true);
                 menuButton.setEnabled(false);
                 editButton.setEnabled(true);
+                status.setText("Menu mode enabled.");
             }
         });
     }
@@ -300,7 +302,6 @@ public class MainFrame extends JFrame{
             Vehicle vehicle = new Vehicle("Car");
             for (int i = 0; i < spots.length - 1; i++) {
                 if (spots[i]) {
-                    //vehicle.setPosition(roadArray[i].getSegments());
                     vehicle.setRoadNumber(i);
                     vehicles.add(vehicle);
                     roadSegments1[0].setVisible(true);

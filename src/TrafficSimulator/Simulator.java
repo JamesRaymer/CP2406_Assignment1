@@ -1,11 +1,9 @@
 package TrafficSimulator;
 
-import java.io.IOException;
-
 public class Simulator {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         MainFrame frame = new MainFrame();
-        frame.setSize(800,800);
+        frame.setSize(1600,1020);
         frame.setVisible(true);
 
         /**Road road2 = new Road(5, "straight", 50);
