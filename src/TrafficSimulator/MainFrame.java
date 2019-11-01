@@ -432,16 +432,48 @@ public class MainFrame extends JFrame{
             }
 
         }
-        if (random.nextFloat() > .8f) {
-            for( int i = 0; i < trafficLights.length; i++){
+        for( int i = 0; i < trafficLights.length; i++){
+            if (random.nextFloat() > .8f) {
                 trafficLights[i].changeStatus();
-                if (trafficLights[0].getStatus() == false){
+                if (!trafficLights[0].getStatus()){
                     lightSegments1[4].setVisible(true);
                     lightSegments1[4].setBackground(Color.RED);
                 }
                 else {
                     lightSegments1[4].setVisible(true);
                     lightSegments1[4].setBackground(Color.GREEN);
+                }
+                if (!trafficLights[1].getStatus()){
+                    lightSegments2[4].setVisible(true);
+                    lightSegments2[4].setBackground(Color.RED);
+                }
+                else {
+                    lightSegments2[4].setVisible(true);
+                    lightSegments2[4].setBackground(Color.GREEN);
+                }
+                if (!trafficLights[2].getStatus()){
+                    lightSegments3[4].setVisible(true);
+                    lightSegments3[4].setBackground(Color.RED);
+                }
+                else {
+                    lightSegments3[4].setVisible(true);
+                    lightSegments3[4].setBackground(Color.GREEN);
+                }
+                if (!trafficLights[3].getStatus()){
+                    lightSegments4[4].setVisible(true);
+                    lightSegments4[4].setBackground(Color.RED);
+                }
+                else {
+                    lightSegments4[4].setVisible(true);
+                    lightSegments4[4].setBackground(Color.GREEN);
+                }
+                if (!trafficLights[4].getStatus()){
+                    lightSegments5[4].setVisible(true);
+                    lightSegments5[4].setBackground(Color.RED);
+                }
+                else {
+                    lightSegments5[4].setVisible(true);
+                    lightSegments5[4].setBackground(Color.GREEN);
                 }
             }
         }
