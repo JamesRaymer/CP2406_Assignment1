@@ -1,14 +1,9 @@
 package TrafficSimulator;
-import javax.swing.*;
-import java.awt.*;
-import java.io.FileWriter;
+
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 public class Simulator {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         MainFrame frame = new MainFrame();
         frame.setSize(800,800);
         frame.setVisible(true);
