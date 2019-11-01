@@ -14,13 +14,17 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.TimerTask;
 import javax.swing.*;
+import javax.swing.event.AncestorEvent;
+import javax.swing.event.AncestorListener;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.awt.Graphics;
 
 public class MainFrame extends JFrame{
-    private JLabel header, statusLabel,status, mode;
+    private JLabel header, statusLabel, mode;
+    private int carCount;
+    private JLabel status = new JLabel("" + carCount);
     private JButton startButton, exitButton, editButton, menuButton;
     private boolean editable;
     private boolean[] spots = {false, false, false, false, false};
@@ -51,7 +55,7 @@ public class MainFrame extends JFrame{
     JPanel lightGrid5 = new JPanel();
     JPanel[] lightSegments5 = {new JPanel(), new JPanel(), new JPanel(), new JPanel(), new JPanel(),};
 
-    MainFrame() throws IOException {
+    MainFrame() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JMenuBar menuBar = new JMenuBar();
         setJMenuBar(menuBar);
@@ -62,7 +66,7 @@ public class MainFrame extends JFrame{
         file.add(save);
         menuBar.add(file);
         header = new JLabel("Traffic Simulator");
-        JLabel status = new JLabel("");
+        final JLabel status = new JLabel("Not running.");
         JPanel menuPanel = new JPanel();
         JPanel mainGrid = new JPanel();
         JPanel space1 = new JPanel();
@@ -103,6 +107,18 @@ public class MainFrame extends JFrame{
         lightGrid3.setLayout(new GridLayout(1,5));
         lightGrid4.setLayout(new GridLayout(1,5));
         lightGrid5.setLayout(new GridLayout(1,5));
+        for (int i = 0; i < 5; i++){
+            lightSegments1[i].setVisible(false);
+            lightGrid1.add(lightSegments1[i]);
+            lightSegments2[i].setVisible(false);
+            lightGrid2.add(lightSegments2[i]);
+            lightSegments3[i].setVisible(false);
+            lightGrid3.add(lightSegments3[i]);
+            lightSegments4[i].setVisible(false);
+            lightGrid4.add(lightSegments4[i]);
+            lightSegments5[i].setVisible(false);
+            lightGrid5.add(lightSegments5[i]);
+        }
         trafficGrid.setLayout(new GridLayout(1,5));
         trafficGrid.add(grid1);
         trafficGrid.add(grid2);
@@ -259,6 +275,7 @@ public class MainFrame extends JFrame{
                 run();
                 startButton.setEnabled(false);
                 editButton.setEnabled(false);
+                status.setText("Running.");
             }
         });
         editButton.addActionListener(new ActionListener() {
@@ -298,6 +315,7 @@ public class MainFrame extends JFrame{
                     //vehicle.setPosition(roadArray[i].getSegments());
                     vehicle.setRoadNumber(i);
                     vehicles.add(vehicle);
+                    carCount = vehicles.size();
                     roadSegments1[0].setVisible(true);
                     break;
                 }
@@ -368,6 +386,7 @@ public class MainFrame extends JFrame{
                     if (vehicles.get(i).getRoadNumber() == 4 ){
                         roadSegments5[4].setVisible(false);
                         vehicles.remove(i);
+                        carCount = vehicles.size();
                     }
                     else{
                         switch (vehicles.get(i).getRoadNumber()){
@@ -392,8 +411,6 @@ public class MainFrame extends JFrame{
                     }
                 }
                 else {
-                    System.out.println("Traffic light: " + trafficLights[vehicles.get(i).getRoadNumber()].getStatus());
-                    System.out.println("before remove: " + Integer.toString(vehicles.size()));
                     switch (vehicles.get(i).getRoadNumber()){
                         case 0 :
                             roadSegments1[4].setVisible(false);
@@ -411,8 +428,6 @@ public class MainFrame extends JFrame{
                             roadSegments5[4].setVisible(false);
                             break;
                     }
-                    vehicles.remove(i);
-                    System.out.println("after remove: " + Integer.toString(vehicles.size()));
                 }
             }
 
@@ -420,6 +435,14 @@ public class MainFrame extends JFrame{
         if (random.nextFloat() > .8f) {
             for( int i = 0; i < trafficLights.length; i++){
                 trafficLights[i].changeStatus();
+                if (trafficLights[0].getStatus() == false){
+                    lightSegments1[4].setVisible(true);
+                    lightSegments1[4].setBackground(Color.RED);
+                }
+                else {
+                    lightSegments1[4].setVisible(true);
+                    lightSegments1[4].setBackground(Color.GREEN);
+                }
             }
         }
     }
