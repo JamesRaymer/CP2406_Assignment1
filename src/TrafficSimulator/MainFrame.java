@@ -40,6 +40,16 @@ public class MainFrame extends JFrame{
     JPanel[] roadSegments4 = {new JPanel(), new JPanel(), new JPanel(), new JPanel(), new JPanel(),};
     JPanel grid5 = new JPanel();
     JPanel[] roadSegments5 = {new JPanel(), new JPanel(), new JPanel(), new JPanel(), new JPanel(),};
+    JPanel lightGrid1 = new JPanel();
+    JPanel[] lightSegments1 = {new JPanel(), new JPanel(), new JPanel(), new JPanel(), new JPanel(),};
+    JPanel lightGrid2 = new JPanel();
+    JPanel[] lightSegments2 = {new JPanel(), new JPanel(), new JPanel(), new JPanel(), new JPanel(),};
+    JPanel lightGrid3 = new JPanel();
+    JPanel[] lightSegments3 = {new JPanel(), new JPanel(), new JPanel(), new JPanel(), new JPanel(),};
+    JPanel lightGrid4 = new JPanel();
+    JPanel[] lightSegments4 = {new JPanel(), new JPanel(), new JPanel(), new JPanel(), new JPanel(),};
+    JPanel lightGrid5 = new JPanel();
+    JPanel[] lightSegments5 = {new JPanel(), new JPanel(), new JPanel(), new JPanel(), new JPanel(),};
 
     MainFrame() throws IOException {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -60,8 +70,9 @@ public class MainFrame extends JFrame{
         JPanel space3 = new JPanel();
         JPanel space4 = new JPanel();
         JPanel space5 = new JPanel();
-        JPanel newExitPanel = new JPanel();
+        JPanel space6 = new JPanel();
         JPanel trafficGrid = new JPanel();
+        JPanel mainLightGrid = new JPanel();
         JPanel bottomPanel = new JPanel();
         JLabel mode = new JLabel("Mode: ");
         JLabel statusLabel = new JLabel("Status: ");
@@ -75,10 +86,23 @@ public class MainFrame extends JFrame{
         grid3.setBackground(Color.WHITE);
         grid2.setBackground(Color.WHITE);
         grid1.setBackground(Color.WHITE);
-        mainGrid.setLayout(new GridLayout(3,1));
+        mainGrid.setLayout(new GridLayout(5,1));
         mainGrid.add(space1);
+        mainGrid.add(mainLightGrid);
         mainGrid.add(trafficGrid);
         mainGrid.add(space2);
+        mainGrid.add(space6);
+        mainLightGrid.setLayout(new GridLayout(1,5));
+        mainLightGrid.add(lightGrid1);
+        mainLightGrid.add(lightGrid2);
+        mainLightGrid.add(lightGrid3);
+        mainLightGrid.add(lightGrid4);
+        mainLightGrid.add(lightGrid5);
+        lightGrid1.setLayout(new GridLayout(1,5));
+        lightGrid2.setLayout(new GridLayout(1,5));
+        lightGrid3.setLayout(new GridLayout(1,5));
+        lightGrid4.setLayout(new GridLayout(1,5));
+        lightGrid5.setLayout(new GridLayout(1,5));
         trafficGrid.setLayout(new GridLayout(1,5));
         trafficGrid.add(grid1);
         trafficGrid.add(grid2);
